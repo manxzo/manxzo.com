@@ -1,0 +1,189 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Admin
+model Admin {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+//Type Enum
+enum Type {
+  PROFESSIONAL
+  CASUAL
+}
+
+// Profile
+model Profile {
+  id          String    @id @default(cuid())
+  name        String
+  title       String
+  type        Type
+  bio         String    @db.Text
+  avatar      String?
+  location    String?
+  birthday    DateTime?
+  email       String
+  phoneNumber String?
+  address     String?
+  github      String?
+  linkedin    String?
+  website     String?
+  discord     String?
+  telegram    String?
+  resumeUrl   String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+// Project Status Enum
+enum ProjectStatus {
+  PLANNED
+  IN_PROGRESS
+  COMPLETED
+  ARCHIVED
+}
+
+// Projects
+model Project {
+  id           String        @id @default(cuid())
+  title        String
+  description  String        @db.Text
+  image        String?
+  githubUrl    String?
+  liveUrl      String?
+  technologies String[]
+  projectType  Type
+  featured     Boolean       @default(false)
+  status       ProjectStatus @default(IN_PROGRESS)
+  startDate    DateTime?
+  endDate      DateTime?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+}
+
+// Work Experience
+model Experience {
+  id          String    @id @default(cuid())
+  company     String
+  position    String
+  location    String?
+  startDate   DateTime
+  endDate     DateTime?
+  current     Boolean   @default(false)
+  description String    @db.Text
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+// Proficiency level Enum
+enum ProficiencyLevel {
+  BEGINNER
+  INTERMEDIATE
+  ADVANCED
+  EXPERT
+  MASTER
+}
+
+// Skill Category Enum
+enum SkillCategory {
+  TECHNOLOGY
+  SOFT_SKILLS
+  OTHERS
+}
+
+// Skills
+model Skill {
+  id              String           @id @default(cuid())
+  name            String
+  category        SkillCategory
+  proficiency     ProficiencyLevel
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  Certification   Certification?   @relation(fields: [certificationId], references: [id])
+  certificationId String?
+}
+
+//Blog Posts
+model Post {
+  id        String   @id @default(cuid())
+  title     String
+  slug      String   @unique
+  type      Type
+  thumbnail String?
+  content   String   @db.Text
+  published Boolean  @default(false)
+  tags      String[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Messages
+model Message {
+  id        String   @id @default(cuid())
+  name      String
+  email     String?
+  subject   String
+  content   String   @db.Text
+  read      Boolean  @default(false)
+  featured  Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+//Certifications
+model Certification {
+  id            String    @id @default(cuid())
+  name          String
+  issuer        String
+  issueDate     DateTime
+  expiryDate    DateTime?
+  credentialUrl String?
+  description   String?   @db.Text
+  skills        Skill[]
+  featured      Boolean   @default(false)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+// Interest Type Enum
+enum InterestType {
+  BOOK
+  MUSIC
+  HOBBY
+  SPORT
+  GAMES
+  TECHNOLOGY
+  LEARNING
+  OTHER
+  PROFESSIONAL
+}
+
+// Interest Status Enum
+enum InterestStatus {
+  CURRENT
+  COMPLETED
+  PLANNED
+  ONGOING
+}
+
+// Personal Interests
+model Interest {
+  id          String         @id @default(cuid())
+  type        InterestType
+  title       String
+  description String         @db.Text
+  status      InterestStatus @default(CURRENT)
+  link        String?
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+}
