@@ -19,7 +19,7 @@ export default function RootLayout({
         <SplashCursor 
       DENSITY_DISSIPATION={5}
       COLOR_UPDATE_SPEED={15}
-      SPLAT_RADIUS={0.01}
+      SPLAT_RADIUS={0.05}
       SPLAT_FORCE={9000}
       TRANSPARENT={true}
     />
