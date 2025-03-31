@@ -32,13 +32,13 @@ export default function RootLayout({
 />
         </div>
         <AppRouterCacheProvider>
-          <SplashCursor
-            DENSITY_DISSIPATION={5}
-            COLOR_UPDATE_SPEED={15}
-            SPLAT_RADIUS={0.02}
-            SPLAT_FORCE={9000}
-            TRANSPARENT={true}
-          />
+        <SplashCursor 
+      DENSITY_DISSIPATION={5}
+      COLOR_UPDATE_SPEED={15}
+      SPLAT_RADIUS={0.02}
+      SPLAT_FORCE={9000}
+      TRANSPARENT={true}
+    />
           {children}
         </AppRouterCacheProvider>
       </body>
