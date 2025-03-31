@@ -2,13 +2,30 @@
 
 import Dock from "../ReactBits/Components/Dock/Dock";
 import { HomeIcon,ArchiveIcon,UserCircle,SettingsIcon } from "lucide-react";
+import { addToast } from "@heroui/react";
 const ProfessionalDock = () => {
    
     const items = [
-        { icon: <HomeIcon />, label: 'Home', onClick: () =>null },
-        { icon: <ArchiveIcon />, label: 'Archive', onClick: () => null},
-        { icon: <UserCircle />, label: 'Profile', onClick: () => null },
-        { icon: <SettingsIcon />, label: 'Settings', onClick: () => null },
+        { icon: <HomeIcon />, label: 'Home', onClick: () =>addToast({
+            title: 'Hello',
+            description: 'This is a toast',
+            variant: 'solid',
+        }) },
+        { icon: <ArchiveIcon />, label: 'Archive', onClick: () => addToast({
+            title: 'Hello',
+            description: 'This is a toast',
+            variant: 'solid',
+        })},
+        { icon: <UserCircle />, label: 'Profile', onClick: () => addToast({
+            title: 'Hello',
+            description: 'This is a toast',
+            variant: 'solid',
+        })},
+        { icon: <SettingsIcon />, label: 'Settings', onClick: () => addToast({
+            title: 'Hello',
+            description: 'This is a toast',
+            variant: 'solid',
+        })},
     ];
     return <Dock items={items} />;
 };

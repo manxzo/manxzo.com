@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "white" },
+    { media: "(prefers-color-scheme: light)", color: "black" },
     { media: "(prefers-color-scheme: dark)", color: "black" },
   ],
 };
@@ -37,26 +37,27 @@ export default function RootLayout({
       <head />
       <body
         className={clsx(
-          "min-h-screen bg-background font-sans antialiased",
+          "min-h-screen font-sans antialiased",
           fontSans.variable,
         )}
       >
-        <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-          <div className="fixed inset-0 -z-10">
-            <Aurora
-              colorStops={["#01213a", "#01411f", "#005d55"]}
-              blend={0.5}
-              amplitude={1.0}
-              speed={0.5}
-            />
-          </div>
-          <SplashCursor
-            DENSITY_DISSIPATION={5}
-            COLOR_UPDATE_SPEED={15}
-            SPLAT_RADIUS={0.02}
-            SPLAT_FORCE={9000}
-            TRANSPARENT={true}
+        <div className="fixed inset-0 -z-10">
+          <Aurora
+            colorStops={["#01213a", "#01411f", "#005d55"]}
+            blend={0.5}
+            amplitude={1.0}
+            speed={0.5}
           />
+        </div>
+        <SplashCursor
+          DENSITY_DISSIPATION={5}
+          COLOR_UPDATE_SPEED={15}
+          SPLAT_RADIUS={0.02}
+          SPLAT_FORCE={9000}
+          TRANSPARENT={true}
+        />
+        <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
+
           {children}
         </Providers>
       </body>
