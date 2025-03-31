@@ -1,4 +1,3 @@
-
 "use client";
 import { useSprings, animated, SpringConfig } from "@react-spring/web";
 import { useEffect, useRef, useState } from "react";
@@ -14,6 +13,7 @@ interface SplitTextProps {
   rootMargin?: string;
   textAlign?: "left" | "right" | "center" | "justify" | "start" | "end";
   onLetterAnimationComplete?: () => void;
+  replay?: boolean;
 }
 
 const SplitText: React.FC<SplitTextProps> = ({
@@ -27,12 +27,25 @@ const SplitText: React.FC<SplitTextProps> = ({
   rootMargin = "-100px",
   textAlign = "center",
   onLetterAnimationComplete,
+  replay = false,
 }) => {
   const words = text.split(" ").map((word) => word.split(""));
   const letters = words.flat();
   const [inView, setInView] = useState(false);
+  const [animationKey, setAnimationKey] = useState(0);
   const ref = useRef<HTMLParagraphElement>(null);
   const animatedCount = useRef(0);
+  const prevReplayRef = useRef(replay);
+
+  useEffect(() => {
+    if (replay !== prevReplayRef.current) {
+      if (replay) {
+        animatedCount.current = 0;
+        setAnimationKey(prev => prev + 1);
+      }
+      prevReplayRef.current = replay;
+    }
+  }, [replay]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -60,18 +73,20 @@ const SplitText: React.FC<SplitTextProps> = ({
       from: animationFrom,
       to: inView
         ? async (next: (props: any) => Promise<void>) => {
-            await next(animationTo);
-            animatedCount.current += 1;
-            if (
-              animatedCount.current === letters.length &&
-              onLetterAnimationComplete
-            ) {
-              onLetterAnimationComplete();
-            }
+          await next(animationTo);
+          animatedCount.current += 1;
+          if (
+            animatedCount.current === letters.length &&
+            onLetterAnimationComplete
+          ) {
+            onLetterAnimationComplete();
           }
+        }
         : animationFrom,
       delay: i * delay,
       config: { easing },
+      reset: true,
+      key: animationKey,
     })),
   );
 
