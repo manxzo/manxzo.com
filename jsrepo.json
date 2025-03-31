@@ -6,10 +6,10 @@
   "formatter": "prettier",
   "configFiles": {},
   "paths": {
-    "*": "./src/ReactBits/blocks",
-    "Animations": "./src/ReactBits/Animations",
-    "Backgrounds": "./src/ReactBits/Backgrounds",
-    "Components": "./src/ReactBits/Components",
-    "TextAnimations": "./src/ReactBits/TextAnimations"
+    "*": "./components/blocks",
+    "Animations": "./components/Reactbits/Animations",
+    "Backgrounds": "./components/Reactbits/Backgrounds",
+    "Components": "./components/Reactbits/Components",
+    "TextAnimations": "./components/Reactbits/TextAnimations"
   }
 }

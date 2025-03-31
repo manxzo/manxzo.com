@@ -1,6 +1,6 @@
 "use client";
-import SplitText from "@/ReactBits/TextAnimations/SplitText/SplitText";
-import PixelCard from "@/ReactBits/Components/PixelCard/PixelCard";
+import PixelCard from "@/components/ReactBits/Components/PixelCard/PixelCard";
+import SplitText from "@/components/ReactBits/TextAnimations/SplitText/SplitText";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
