@@ -1,4 +1,3 @@
-//@ts-nocheck
 "use client";
 import { useEffect, useRef } from "react";
 import { Renderer, Program, Mesh, Color, Triangle } from "ogl";
@@ -143,7 +142,9 @@ export default function Aurora(props: AuroraProps) {
     gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
     gl.canvas.style.backgroundColor = "transparent";
 
-    const program: Program | undefined;
+    // @ts-ignore
+    // eslint-disable-next-line prefer-const
+    let program: Program | undefined;
 
     function resize() {
       if (!ctn) return;

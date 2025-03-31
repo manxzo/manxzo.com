@@ -1,4 +1,7 @@
-//@ts-nocheck
+/*
+  Installed from https://reactbits.dev/ts/tailwind/
+*/
+//ts-nocheck
 "use client";
 import React, { useEffect, useRef } from "react";
 
@@ -371,7 +374,7 @@ export default function SplashCursor({
         for (const kw of keywords) {
           hash += hashCode(kw);
         }
-        const program = this.programs[hash];
+        let program = this.programs[hash];
         if (program == null) {
           const fragmentShader = compileShader(
             gl.FRAGMENT_SHADER,
