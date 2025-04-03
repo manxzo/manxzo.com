@@ -5,12 +5,12 @@ const prisma = new PrismaClient();
 
 export async function GET(request: NextRequest) {
   try {
-    const profile = await prisma.profile.findFirst({
+    const profiles = await prisma.profile.findMany({
       orderBy: {
         updatedAt: "desc",
       },
     });
-    return NextResponse.json(profile);
+    return NextResponse.json(profiles);
   } catch (error) {
     return NextResponse.json(
       { error: "Internal Server Error" },

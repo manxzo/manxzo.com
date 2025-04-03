@@ -9,9 +9,16 @@ export const fetchWithAuth = async (url: string, options: RequestInit = {}) => {
     ...options.headers,
   };
 
+  // If body is a string, parse it as JSON
+  const body =
+    typeof options.body === "string"
+      ? options.body
+      : JSON.stringify(options.body);
+
   const response = await fetch(url, {
     ...options,
     headers,
+    body,
   });
 
   if (!response.ok) {

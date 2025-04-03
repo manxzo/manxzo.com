@@ -17,6 +17,7 @@ export async function adminAuthMiddleware(request: NextRequest) {
       token,
       new TextEncoder().encode(process.env.JWT_SECRET)
     );
+    console.log(NextResponse.next());
     return NextResponse.next();
   } catch (error) {
     return NextResponse.json(
