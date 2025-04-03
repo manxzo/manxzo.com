@@ -19,13 +19,17 @@
     "intl-messageformat": "^10.5.0",
     "@prisma/client": "^6.5.0",
     "@react-spring/web": "^9.7.5",
-    "lucide-react":"^0.485.0",
+    "lucide-react": "^0.485.0",
     "gsap": "^3.12.7",
     "ogl": "^1.0.11",
     "next": "15.0.4",
     "next-themes": "^0.4.4",
     "react": "18.3.1",
-    "react-dom": "18.3.1"
+    "react-dom": "18.3.1",
+    "bcryptjs": "^2.4.3",
+    "jose": "^5.2.0",
+    "nanoid": "^5.0.4",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "15.0.4",
@@ -50,6 +54,8 @@
     "prettier": "3.3.3",
     "tailwind-variants": "0.3.0",
     "tailwindcss": "3.4.16",
-    "typescript": "5.6.3"
+    "typescript": "5.6.3",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/uuid": "^9.0.7"
   }
 }

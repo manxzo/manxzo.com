@@ -7,9 +7,9 @@
   "configFiles": {},
   "paths": {
     "*": "./components/blocks",
-    "Animations": "./components/Reactbits/Animations",
-    "Backgrounds": "./components/Reactbits/Backgrounds",
-    "Components": "./components/Reactbits/Components",
-    "TextAnimations": "./components/Reactbits/TextAnimations"
+    "Animations": "./components/ReactBits/Animations",
+    "Backgrounds": "./components/ReactBits/Backgrounds",
+    "Components": "./components/ReactBits/Components",
+    "TextAnimations": "./components/ReactBits/TextAnimations"
   }
 }

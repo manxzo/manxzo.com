@@ -1,0 +1,112 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+
+# Next.js Project Component Usage Cursor Rule
+
+This cursor rule defines the allowed components for use in this Next.js project. The components are sourced from HeroUI, React Bits, and Lucide React Icons. For every allowed component, the cursor AI will refer to its official documentation for usage guidelines. Any component not listed below should be treated as a standard HTML element.
+
+## Project Framework
+This is a Next.js project using the App Router. All components should follow Next.js best practices and conventions.
+
+## Component Libraries
+
+### React Bits Components
+React Bits components should be imported from '@reactbits/core'. For documentation and usage guidelines, visit @React Bits Documentation.
+
+Available React Bits components include:
+- All components from the React Bits library are allowed
+- Follow React Bits documentation for proper usage and props
+
+
+## Icon Usage
+For icons, use Lucide React Icons exclusively. The Lucide React package is pre-installed.
+- Import icons from 'lucide-react'
+- Documentation: @Lucide Icons Documentation
+- Example usage: `import { Home, Settings, User } from 'lucide-react'`
+
+## Additional Notes
+1. HeroUI components prefer onPress as onClick is deprecated
+2. Always use proper TypeScript types for components and props
+3. Follow Next.js routing conventions and best practices
+4. React Bits components should be used according to their official documentation
+5. Maintain consistent styling using the project's theme system
+
+
+# HeroUI Components Cursor Rule
+
+The following rule ensures that only the specified HeroUI components are used in your code. For every allowed component, the cursor AI will refer to its official documentation for usage guidelines. Any component not listed below should be treated as a standard HTML element.
+
+## Allowed HeroUI Components
+
+- **Accordion** – [Documentation](mdc:https:/www.heroui.com/docs/components/accordion)
+- **Autocomplete** – [Documentation](mdc:https:/www.heroui.com/docs/components/autocomplete)
+- **Alert** – [Documentation](mdc:https:/www.heroui.com/docs/components/alert)
+- **Avatar** – [Documentation](mdc:https:/www.heroui.com/docs/components/avatar)
+- **Badge** – [Documentation](mdc:https:/www.heroui.com/docs/components/badge)
+- **Breadcrumbs** – [Documentation](mdc:https:/www.heroui.com/docs/components/breadcrumbs)
+- **Button** – [Documentation](mdc:https:/www.heroui.com/docs/components/button)
+- **Calendar** – [Documentation](mdc:https:/www.heroui.com/docs/components/calendar)
+- **Card** – [Documentation](mdc:https:/www.heroui.com/docs/components/card)
+- **Checkbox** – [Documentation](mdc:https:/www.heroui.com/docs/components/checkbox)
+- **Checkbox Group** – [Documentation](mdc:https:/www.heroui.com/docs/components/checkbox-group)
+- **Chip** – [Documentation](mdc:https:/www.heroui.com/docs/components/chip)
+- **Circular Progress** – [Documentation](mdc:https:/www.heroui.com/docs/components/circular-progress)
+- **Code** – [Documentation](mdc:https:/www.heroui.com/docs/components/code)
+- **Date Input** – [Documentation](mdc:https:/www.heroui.com/docs/components/date-input)
+- **Date Picker** – [Documentation](mdc:https:/www.heroui.com/docs/components/date-picker)
+- **Date Range Picker** – [Documentation](mdc:https:/www.heroui.com/docs/components/date-range-picker)
+- **Divider** – [Documentation](mdc:https:/www.heroui.com/docs/components/divider)
+- **Dropdown** – [Documentation](mdc:https:/www.heroui.com/docs/components/dropdown)
+- **Drawer** – [Documentation](mdc:https:/www.heroui.com/docs/components/drawer)
+- **Form** – [Documentation](mdc:https:/www.heroui.com/docs/components/form)
+- **Image** – [Documentation](mdc:https:/www.heroui.com/docs/components/image)
+- **Input** – [Documentation](mdc:https:/www.heroui.com/docs/components/input)
+- **Input OTP** – [Documentation](mdc:https:/www.heroui.com/docs/components/input-otp)
+- **Kbd** – [Documentation](mdc:https:/www.heroui.com/docs/components/kbd)
+- **Link** – [Documentation](mdc:https:/www.heroui.com/docs/components/link)
+- **Listbox** – [Documentation](mdc:https:/www.heroui.com/docs/components/listbox)
+- **Modal** – [Documentation](mdc:https:/www.heroui.com/docs/components/modal)
+- **Navbar** – [Documentation](mdc:https:/www.heroui.com/docs/components/navbar)
+- **Number Input** – [Documentation](mdc:https:/www.heroui.com/docs/components/number-input)
+- **Pagination** – [Documentation](mdc:https:/www.heroui.com/docs/components/pagination)
+- **Popover** – [Documentation](mdc:https:/www.heroui.com/docs/components/popover)
+- **Progress** – [Documentation](mdc:https:/www.heroui.com/docs/components/progress)
+- **Radio Group** – [Documentation](mdc:https:/www.heroui.com/docs/components/radio-group)
+- **Range Calendar** – [Documentation](mdc:https:/www.heroui.com/docs/components/range-calendar)
+- **Scroll Shadow** – [Documentation](mdc:https:/www.heroui.com/docs/components/scroll-shadow)
+- **Select** – [Documentation](mdc:https:/www.heroui.com/docs/components/select)
+- **Skeleton** – [Documentation](mdc:https:/www.heroui.com/docs/components/skeleton)
+- **Slider** – [Documentation](mdc:https:/www.heroui.com/docs/components/slider)
+- **Snippet** – [Documentation](mdc:https:/www.heroui.com/docs/components/snippet)
+- **Spacer** – [Documentation](mdc:https:/www.heroui.com/docs/components/spacer)
+- **Spinner** – [Documentation](mdc:https:/www.heroui.com/docs/components/spinner)
+- **Switch** – [Documentation](mdc:https:/www.heroui.com/docs/components/switch)
+- **Table** – [Documentation](mdc:https:/www.heroui.com/docs/components/table)
+- **Tabs** – [Documentation](mdc:https:/www.heroui.com/docs/components/tabs)
+- **Toast** – [Documentation](mdc:https:/www.heroui.com/docs/components/toast)
+- **Textarea** – [Documentation](mdc:https:/www.heroui.com/docs/components/textarea)
+- **Time Input** – [Documentation](mdc:https:/www.heroui.com/docs/components/time-input)
+- **Tooltip** – [Documentation](mdc:https:/www.heroui.com/docs/components/tooltip)
+- **User** – [Documentation](mdc:https:/www.heroui.com/docs/components/user)
+
+## Cursor Rule Implementation
+
+1. **Allowed Components Only:**  
+   The cursor AI must enforce that only the HeroUI components listed above are used. Any component outside of this list should be treated as a standard HTML element.
+
+2. **Documentation Reference:**  
+   When an allowed HeroUI component is detected in the code, the AI should automatically provide a reference to its documentation for proper usage.
+
+3. **Consistency Across the Codebase:**  
+   This rule should be applied consistently during code editing and build processes. It may be integrated into IDE extensions or linting tools to offer real-time feedback and documentation tooltips.
+
+4. **Maintenance:**  
+   If the list of allowed components changes in the future, update the mapping accordingly to ensure the rule remains current.
+
+Notes: 
+1. HeroUI components prefer onPress as onClick is deprecated.
+
+By following this cursor rule, developers are guided to use only the specified HeroUI components, ensuring proper documentation reference and adherence to best practices.

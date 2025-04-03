@@ -3,11 +3,13 @@ import { Metadata, Viewport } from "next";
 import Aurora from "@/components/ReactBits/Backgrounds/Aurora/Aurora";
 import clsx from "clsx";
 import SplashCursor from "@/components/ReactBits/Animations/SplashCursor/SplashCursor";
+import { User } from "lucide-react";
 
 import { Providers } from "./providers";
 
 import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: {
@@ -57,6 +59,9 @@ export default function RootLayout({
           TRANSPARENT={true}
         />
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
+          <Link href="/my" className="fixed bottom-4 right-4 z-50 p-2 bg-black/20 backdrop-blur-md rounded-full hover:bg-black/30 transition-colors">
+            <User className="h-4 w-4 text-white" />
+          </Link>
 
           {children}
         </Providers>
