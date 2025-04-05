@@ -33,6 +33,7 @@ For icons, use Lucide React Icons exclusively. The Lucide React package is pre-i
 3. Follow Next.js routing conventions and best practices
 4. React Bits components should be used according to their official documentation
 5. Maintain consistent styling using the project's theme system
+6. HeroUI components are all imported from "@heroui/react"
 
 
 # HeroUI Components Cursor Rule

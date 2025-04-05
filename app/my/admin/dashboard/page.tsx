@@ -1,12 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Card, CardBody, CardFooter, CardHeader } from "@heroui/card";
-import { Spacer } from "@heroui/spacer";
-import { Divider } from "@heroui/divider";
-import { Spinner } from "@heroui/spinner";
-import { Button } from "@heroui/button";
-import { Chip } from "@heroui/chip";
+import { Card, CardBody, CardFooter, CardHeader, Spacer, Divider, Spinner, Button, Chip } from "@heroui/react";
 
 import {
     FileText,
@@ -36,7 +31,7 @@ export default function Dashboard() {
         const fetchData = async () => {
             try {
                 setLoading(true);
-                const dashboard = await adminFetch("api/admin/dashboard", {
+                const dashboard = await adminFetch("/api/admin/dashboard", {
                     method: "GET",
                 });
                 setData(dashboard);
@@ -80,7 +75,7 @@ export default function Dashboard() {
             color: "primary"
         },
         {
-            title: "Messages",
+            title: "Unread Messages",
             value: data.newMessagesCount,
             icon: <MessageSquare className="w-5 h-5" />,
             badge: data.newMessagesCount > 0 ? data.newMessagesCount : null,
