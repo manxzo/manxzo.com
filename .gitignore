@@ -54,3 +54,6 @@ prisma/dev.db
 prisma/dev.db-journal
 node_modules/.prisma/*
 
+#cursor
+.cursorrules
+.cursor/*

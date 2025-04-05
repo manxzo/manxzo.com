@@ -14,7 +14,7 @@ This is a Next.js project using the App Router. All components should follow Nex
 ## Component Libraries
 
 ### React Bits Components
-React Bits components should be imported from '@reactbits/core'. For documentation and usage guidelines, visit @React Bits Documentation.
+React Bits components should be imported from "@/components/ReactBits". For documentation and usage guidelines, visit @React Bits Documentation.
 
 Available React Bits components include:
 - All components from the React Bits library are allowed
