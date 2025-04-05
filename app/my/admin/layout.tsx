@@ -1,9 +1,9 @@
-import MyDock from "@/components/MyDock/MyDock";
+import AdminDock from "@/components/AdminDock/AdminDock";
 const AdminLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div>
       {children}
-      <MyDock />
+      <AdminDock/>
     </div>
   );
 };

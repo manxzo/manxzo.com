@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
 import { verifyPassword } from "@/utils/auth";
 import { SignJWT } from "jose";
-import { nanoid } from "nanoid";
 
 const prisma = new PrismaClient();
 
@@ -10,7 +9,6 @@ export async function POST(request: Request) {
   try {
     const { email, password } = await request.json();
 
-    // Find the admin by email
     const admin = await prisma.admin.findUnique({
       where: { email },
     });
@@ -22,7 +20,6 @@ export async function POST(request: Request) {
       );
     }
 
-    // Verify the password
     const isValid = await verifyPassword(password, admin.password);
 
     if (!isValid) {
@@ -34,19 +31,16 @@ export async function POST(request: Request) {
 
     // Create a JWT token
     const token = await new SignJWT({ adminId: admin.id })
-      .setProtectedHeader({ alg: "HS256" })
-      .setJti(nanoid())
+      .setProtectedHeader({ alg: "HS512" })
       .setIssuedAt()
-      .setExpirationTime("24h")
+      .setExpirationTime("12h")
       .sign(new TextEncoder().encode(process.env.JWT_SECRET));
 
-    // Remove the password from the response
-    const { password: _, ...adminWithoutPassword } = admin;
 
     // Return the token and admin data
     return NextResponse.json({
       token,
-      user: adminWithoutPassword,
+      user: admin.email,
     });
   } catch (error) {
     console.error("Error logging in:", error);

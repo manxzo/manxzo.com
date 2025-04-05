@@ -1,39 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
 import { adminAuthMiddleware } from "../auth/middleware";
-import { v4 as uuidv4 } from "uuid";
 const prisma = new PrismaClient();
-
-export async function GET(request: NextRequest) {
-  try {
-    await adminAuthMiddleware(request);
-    const profiles = await prisma.profile.findMany({
-      orderBy: {
-        updatedAt: "desc",
-      },
-    });
-    return NextResponse.json(profiles);
-  } catch (error) {
-    return NextResponse.json(
-      { error: "Internal Server Error" },
-      { status: 500 }
-    );
-  }
-}
 
 export async function POST(request: NextRequest) {
   try {
     await adminAuthMiddleware(request);
     const data = await request.json();
-    console.log(data);
-    const profile = await prisma.profile.create({
-      data: {
-        ...data,
-        id: uuidv4(),
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-    });
+    const profile = await prisma.profile.create({data:data});
 
     return NextResponse.json(profile, { status: 201 });
   } catch (error) {
@@ -54,7 +28,6 @@ export async function PUT(request: NextRequest) {
       where: { id },
       data: {
         ...updateData,
-        updatedAt: new Date(),
       },
     });
 

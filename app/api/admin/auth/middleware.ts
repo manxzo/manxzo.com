@@ -4,20 +4,15 @@ import { jwtVerify } from "jose";
 
 export async function adminAuthMiddleware(request: NextRequest) {
   const token = request.headers.get("Authorization")?.split(" ")[1];
-
   if (!token) {
     return NextResponse.json(
       { error: "Unauthorized - No token provided" },
       { status: 401 }
     );
   }
-
   try {
-    const verified = await jwtVerify(
-      token,
-      new TextEncoder().encode(process.env.JWT_SECRET)
-    );
-    console.log(NextResponse.next());
+    const secretKey = new TextEncoder().encode(process.env.JWT_SECRET);
+    const verified = await jwtVerify(token, secretKey);
     return NextResponse.next();
   } catch (error) {
     return NextResponse.json(

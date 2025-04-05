@@ -5,11 +5,7 @@ const prisma = new PrismaClient();
 
 export async function GET(request: NextRequest) {
   try {
-    const profiles = await prisma.profile.findMany({
-      orderBy: {
-        updatedAt: "desc",
-      },
-    });
+    const profiles = await prisma.profile.findMany();
     return NextResponse.json(profiles);
   } catch (error) {
     return NextResponse.json(

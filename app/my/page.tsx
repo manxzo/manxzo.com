@@ -7,7 +7,7 @@ import { Button } from "@heroui/button";
 import { Lock, Mail } from "lucide-react";
 import { addToast } from "@heroui/react";
 import { useRouter } from "next/navigation";
-import { setToken, isAuthenticated } from "@/utils/auth";
+import { isAuthenticated, setToken } from "../../utils/auth";
 
 const My = () => {
   const router = useRouter();
@@ -18,7 +18,7 @@ const My = () => {
   // Check if already authenticated
   useEffect(() => {
     if (isAuthenticated()) {
-      router.push('/admin/dashboard');
+      router.push('/my/admin/dashboard');
     }
   }, [router]);
 
@@ -37,14 +37,10 @@ const My = () => {
           password,
         }),
       });
-
       const data = await response.json();
-
       if (!response.ok) {
         throw new Error(data.error || 'Failed to log in');
       }
-
-      // Store the token
       setToken(data.token);
 
       addToast({
@@ -54,8 +50,7 @@ const My = () => {
         color: "success"
       });
 
-      // Redirect to admin dashboard
-      router.push('/admin/dashboard');
+      router.push('/my/admin/dashboard');
     } catch (error) {
       addToast({
         title: "Error",
@@ -73,7 +68,6 @@ const My = () => {
       <Card className="w-full max-w-md p-6 space-y-6">
         <div className="text-center">
           <h2 className="text-2xl font-bold">Admin Login</h2>
-          <p className="text-default-500">Please sign in to continue</p>
         </div>
 
         <form onSubmit={handleLogin} className="space-y-4">

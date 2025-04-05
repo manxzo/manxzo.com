@@ -8,29 +8,29 @@ datasource db {
 }
 
 model Admin {
-  id        String   @id
+  id        String   @id @default(uuid())
   email     String   @unique
   password  String
   createdAt DateTime @default(now())
-  updatedAt DateTime
+  updatedAt DateTime @updatedAt
 }
 
 model Certification {
-  id            String    @id
+  id            String    @id @default(uuid())
   name          String
   issuer        String
-  issueDate     DateTime
+  issueDate     DateTime?
   expiryDate    DateTime?
   credentialUrl String?
   description   String?
   featured      Boolean   @default(false)
   createdAt     DateTime  @default(now())
-  updatedAt     DateTime
+  updatedAt     DateTime  @updatedAt
   Skill         Skill[]
 }
 
 model Experience {
-  id          String    @id
+  id          String    @id @default(uuid())
   company     String
   position    String
   location    String?
@@ -39,22 +39,22 @@ model Experience {
   current     Boolean   @default(false)
   description String
   createdAt   DateTime  @default(now())
-  updatedAt   DateTime
+  updatedAt   DateTime  @updatedAt
 }
 
 model Interest {
-  id          String         @id
+  id          String         @id @default(uuid())
   type        InterestType
   title       String
   description String
   status      InterestStatus @default(CURRENT)
   link        String?
   createdAt   DateTime       @default(now())
-  updatedAt   DateTime
+  updatedAt   DateTime       @updatedAt
 }
 
 model Message {
-  id        String   @id
+  id        String   @id @default(uuid())
   name      String
   email     String?
   subject   String
@@ -62,12 +62,12 @@ model Message {
   read      Boolean  @default(false)
   featured  Boolean  @default(false)
   createdAt DateTime @default(now())
-  updatedAt DateTime
+  updatedAt DateTime @updatedAt
 }
 
 model Post {
-  id        String   @id
-  title     String
+  id        String   @id @default(uuid())
+  title     String   
   slug      String   @unique
   type      Type
   thumbnail String?
@@ -75,11 +75,11 @@ model Post {
   published Boolean  @default(false)
   tags      String[]
   createdAt DateTime @default(now())
-  updatedAt DateTime
+  updatedAt DateTime @updatedAt
 }
 
 model Profile {
-  id          String    @id
+  id          String    @id @default(uuid())
   name        String
   title       String
   type        Type
@@ -97,11 +97,11 @@ model Profile {
   telegram    String?
   resumeUrl   String?
   createdAt   DateTime  @default(now())
-  updatedAt   DateTime
+  updatedAt   DateTime  @updatedAt
 }
 
 model Project {
-  id           String        @id
+  id           String        @id @default(uuid())
   title        String
   description  String
   image        String?
@@ -114,16 +114,16 @@ model Project {
   startDate    DateTime?
   endDate      DateTime?
   createdAt    DateTime      @default(now())
-  updatedAt    DateTime
+  updatedAt    DateTime      @updatedAt
 }
 
 model Skill {
-  id              String           @id
+  id              String           @id @default(uuid())
   name            String
   category        SkillCategory
   proficiency     ProficiencyLevel
   createdAt       DateTime         @default(now())
-  updatedAt       DateTime
+  updatedAt       DateTime         @updatedAt
   certificationId String?
   Certification   Certification?   @relation(fields: [certificationId], references: [id])
 }

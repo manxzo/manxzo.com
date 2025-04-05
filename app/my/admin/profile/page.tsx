@@ -2,10 +2,9 @@
 
 import { useState, useEffect } from "react";
 import { Textarea, addToast, Button, Input, Tabs, Tab, Card } from "@heroui/react";
-import { fetchWithAuth } from "@/utils/api";
-import { isAuthenticated } from "@/utils/auth";
+import { adminFetch } from "@/utils/api";
 import { useRouter } from "next/navigation";
-
+import { isAuthenticated } from "@/utils/auth";
 type Profile = {
   id: string;
   name: string;
@@ -44,8 +43,9 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchProfiles = async () => {
       try {
-        const data = await fetchWithAuth("/api/admin/profile");
-        setProfiles(data);
+        const data = await fetch("/api/profile");
+        const profiles = await data.json();
+        setProfiles(profiles);
       } catch (error) {
         addToast({
           title: "Error",
@@ -80,7 +80,7 @@ const Dashboard = () => {
 
       if (currentProfile) {
         // Update existing profile
-        await fetchWithAuth(`/api/admin/profile`, {
+        await adminFetch(`/api/admin/profile`, {
           method: "PUT",
           body: JSON.stringify({
             id: currentProfile.id,
@@ -90,7 +90,7 @@ const Dashboard = () => {
         });
       } else {
         // Create new profile
-        await fetchWithAuth(`/api/admin/profile`, {
+        await adminFetch(`/api/admin/profile`, {
           method: "POST",
           body: JSON.stringify({
             ...data,
@@ -107,8 +107,9 @@ const Dashboard = () => {
       });
 
       // Refresh profiles
-      const updatedProfiles = await fetchWithAuth("/api/admin/profile");
-      setProfiles(updatedProfiles);
+      const updatedProfiles = await fetch("/api/profile");
+      const profiles = await updatedProfiles.json();
+      setProfiles(profiles);
     } catch (error) {
       addToast({
         title: "Error",

@@ -12,16 +12,12 @@ export const verifyPassword = async (
   return bcrypt.compare(password, hashedPassword);
 };
 
-// Token management
 export const setToken = (token: string) => {
   localStorage.setItem("adminToken", token);
 };
 
 export const getToken = (): string | null => {
-  if (typeof window !== "undefined") {
     return localStorage.getItem("adminToken");
-  }
-  return null;
 };
 
 export const removeToken = () => {

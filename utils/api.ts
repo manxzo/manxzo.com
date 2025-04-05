@@ -1,30 +1,30 @@
 import { getToken } from "./auth";
-
-export const fetchWithAuth = async (url: string, options: RequestInit = {}) => {
+export const adminFetch = async (url: string, options: RequestInit = {}) => {
   const token = getToken();
 
   const headers = {
     "Content-Type": "application/json",
-    ...(token && { Authorization: `Bearer ${token}` }),
     ...options.headers,
+    ...(token && { Authorization: `Bearer ${token}` }),
   };
-
-  // If body is a string, parse it as JSON
   const body =
     typeof options.body === "string"
       ? options.body
       : JSON.stringify(options.body);
+  const method = options.method;
+  try {
+    const response = await fetch(url, {
+      method,
+      headers,
+      body,
+    });
 
-  const response = await fetch(url, {
-    ...options,
-    headers,
-    body,
-  });
-
-  if (!response.ok) {
-    const error = await response.json();
-    throw new Error(error.message || "Something went wrong");
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.message || "Something went wrong");
+    }
+    return response.json();
+  } catch (error) {
+    console.error(error);
   }
-
-  return response.json();
 };
