@@ -40,17 +40,17 @@ const AdminDock = () => {
             icon: <MessageSquareIcon />,
             label: 'Messages',
             onClick: () => router.push('/my/admin/messages')
+        },{
+            icon: <CodeXml />,
+            label: 'Projects',
+            onClick: () => router.push('/my/admin/projects')
         },
         {
             icon: <StarIcon />,
             label: 'Featured',
             onClick: () => router.push('/my/admin/featured')
         },
-        {
-            icon: <CodeXml />,
-            label: 'Projects',
-            onClick: () => router.push('/my/admin/projects')
-        },
+        
     ];
 
     return <Dock items={items} />;

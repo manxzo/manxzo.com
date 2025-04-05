@@ -25,6 +25,11 @@ type Profile = {
   resumeUrl?: string;
 };
 
+const formatDateForInput = (isoString?: string) => {
+  if (!isoString) return "";
+  return new Date(isoString).toISOString().split('T')[0];
+};
+
 const Dashboard = () => {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState<"casual" | "professional">("casual");
@@ -169,7 +174,7 @@ const Dashboard = () => {
                 name="birthday"
                 label="Birthday"
                 type="date"
-                defaultValue={currentProfile?.birthday}
+                defaultValue={formatDateForInput(currentProfile?.birthday)}
               />
               <Input
                 name="email"
@@ -259,7 +264,7 @@ const Dashboard = () => {
                 name="birthday"
                 label="Birthday"
                 type="date"
-                defaultValue={currentProfile?.birthday}
+                defaultValue={formatDateForInput(currentProfile?.birthday)}
               />
               <Input
                 name="email"
