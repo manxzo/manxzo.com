@@ -1,5 +1,5 @@
 const NewExperience = () => {
-  return <div>NewExperience</div>;
+    return <div>NewExperience</div>;
 };
 
 export default NewExperience;
