@@ -1,30 +1,36 @@
 import { getToken } from "./auth";
 export const adminFetch = async (url: string, options: RequestInit = {}) => {
   const token = getToken();
+  if (!token) {
+    throw new Error("Authentication token not found");
+  }
 
   const headers = {
     "Content-Type": "application/json",
     ...options.headers,
-    ...(token && { Authorization: `Bearer ${token}` }),
+    Authorization: `Bearer ${token}`,
   };
+
   const body =
     typeof options.body === "string"
       ? options.body
-      : JSON.stringify(options.body);
-  const method = options.method;
-  try {
-    const response = await fetch(url, {
-      method,
-      headers,
-      body,
-    });
+      : options.body
+        ? JSON.stringify(options.body)
+        : undefined;
 
-    if (!response.ok) {
-      const error = await response.json();
-      throw new Error(error.message || "Something went wrong");
-    }
-    return response.json();
-  } catch (error) {
-    console.error(error);
+  const method = options.method || "GET";
+
+  const response = await fetch(url, {
+    method,
+    headers,
+    body,
+  });
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.error || "Something went wrong");
   }
+
+  return data;
 };
